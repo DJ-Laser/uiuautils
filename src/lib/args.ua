@@ -74,8 +74,6 @@
         ⍩(1)
       ) # EmptyArgsIndicies Args ? Args
 
-      ⊙⊙⟜&p
-
       ⍣(⊢ ⊙⊙∘                                                                # Index Args Arg ? Indicies Args Arg
       | ⍩(&exit 2 &ep ◡$"Unexpected argument: `_` Expected _ arguments." ⋅⧻) # ? Indicies Args Arg
       )
