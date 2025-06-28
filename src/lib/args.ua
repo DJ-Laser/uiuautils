@@ -117,7 +117,7 @@
 
 └─╴
 
-LsDef ← CommandDef CommandDef!(
+TestDef ↚ CommandDef CommandDef!(
   OptionDef!([
       OptionDef OptType~Boolean {@a "--all"}
       OptionDef OptType~Occurrences {@b}
@@ -125,15 +125,6 @@ LsDef ← CommandDef CommandDef!(
   ArgDef!([Single Single Rest])
 )
 
-CommandDef~Parse LsDef {"args.ua" "1" "2" "--all" "-b" "t" "-ab" "--" "-b" "6"}
+# CommandDef~Parse TestDef {"args.ua" "1" "2" "--all" "-b" "t" "-ab" "--" "-b" "6"}
 
-## ┌─                                                                                                                                                             
-##   ┌─ Args                                                                           │Options                             │∙HasOptionSeparator│NextOptionName   
-##     ┌─                        │┌─                        │┌─                        │Type                     │Names     │ 1                 │[]               
-##       ∙Single│∙Present│Value  │  ∙Single│∙Present│Value  │  ∙Rest│Values            │∙Boolean│∙Present        │@a│"--all"│                   │                 
-##        0     │ 1      │"1"    │   0     │ 1      │"2"    │   1   │["t"│"-b"│"6"]    │ 0      │ 0              │          │                   │                 
-##                              ┘│                         ┘│                       ┘  │─────────────────────────┼──────────│                   │                 
-##                                                                                    ┘│Type                     │Names     │                   │                 
-##                                                                                     │∙Occurrences│∙Occurrences│@b│       │                   │                 
-##                                                                                     │ 1          │ 0          │          │                   │                 
-##                                                                                                                                                              ┘ 
+##
