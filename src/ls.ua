@@ -1,3 +1,6 @@
+~ "./lib/directory_finder.ua" ~ DirectoryFinder
+~ "./lib/paths.ua" ~ Basename
+
 ┌─╴LsCommand
   ~ "./lib/args.ua" ~ Command CommandDef
 
@@ -12,37 +15,6 @@
 
   PathArgs ← ◇Command~Arg~Rest~Values ⊡0 Command~Args
 └─╴
-
-┌─╴DirectoryFinder
-  ~File {Path IsFile}
-  ~Dir {Path Files}
-  ~Error {Source Message}
-  ~Result {Dirs ← {}|Errors ← {}}
-
-  # File ? Path
-  MkFile ↚ (
-    File⟜&fif
-  )
-
-  # Result ? Result Dir
-  SearchDir ↚ (
-    ⍣(⍩(⍜Result~Dirs(⊂) ⊙(□Dir)) ⊙⊙⍚MkFile ⊙⟜&fld
-    | ⍜Result~Errors(⊂) ⊙(□Error))
-  )
-
-  # Result ? Paths
-  Search ← (
-    ⊙Result
-    ∧(˜SearchDir °□)
-  )
-└─╴
-
-# Basename ? Path
-Basename ← (
-  regex "^.*\\/(.+$)"
-
-  °□⊡0_1
-)
 
 LsCommand~Parse &args
 
