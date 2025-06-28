@@ -6,7 +6,7 @@
 
   # File ? Path
   MkFile ↚ (
-    File⟜&fif
+    File ⟜(⍣&fif0)
   )
 
   # Result ? Result Dir
